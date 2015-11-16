@@ -6,7 +6,7 @@ var source = require('vinyl-source-stream');
 var watchify = require('watchify');
 var notify = require('gulp-notify');
 var rename = require('gulp-rename');
-// var sourcemaps = require('gulp-sourcemaps');
+var sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('default', ['script-dev', 'sass-dev', 'sass-dev-watch', 'serve']);
 gulp.task('build', ['script', 'sass']);
@@ -21,8 +21,10 @@ gulp.task('serve', () => {
 
 gulp.task('sass-dev', () => {
   gulp.src('src/sass/main.scss')
+    .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(rename('bundle.css'))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('public/build/'));
 });
 
