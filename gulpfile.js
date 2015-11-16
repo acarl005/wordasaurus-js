@@ -1,27 +1,40 @@
 var gulp = require('gulp');
-var browserify = require('gulp-browserify');
+var browserify = require('browserify');
 var sass = require('gulp-sass');
 var nodemon = require('gulp-nodemon');
 var source = require('vinyl-source-stream');
+var watchify = require('watchify');
+var notify = require('gulp-notify');
+var rename = require('gulp-rename');
 
 gulp.task('default', ['script-dev', 'sass-dev', 'serve']);
+gulp.task('build', ['script', 'sass']);
 
 gulp.task('serve', () => {
   nodemon({
     script: 'server/server.js',
     ext: 'js',
-    watch: ['server/', 'public/build/']
-  })
-  .on('restart', () => console.log('restarting server'));
+    watch: ['server/', 'public/']
+  });
 });
 
 gulp.task('sass-dev', () => {
+  gulp.src('src/sass/main.scss')
+    .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+    // .pipe(concat('style.css'))
+    .pipe(rename('bundle.css'))
+    .pipe(gulp.dest('public/build/'));
+});
+
+gulp.task('sass', () => {
   
 });
 
-gulp.task('script-dev', buildScript.bind(this, 'main.js', true));
+gulp.task('script-dev', () => buildScript('main.js', true));
+gulp.task('script', () => buildScript('main.js', false));
 
 function buildScript(file, watch) {
+
   var props = {
     entries : ['src/js/' + file],
     debug : true,
@@ -30,8 +43,14 @@ function buildScript(file, watch) {
     ],
   };
 
-  //watchify if watch set to true. otherwise browserify once
-  var bundler = watch ? watchify(browserify(props)) : browserify(props);
+  var bundler;
+  if (watch) {
+    bundler = watchify(browserify(props));
+  } else {
+    bundler = browserify(props).transform({
+      global: true
+    }, 'uglifyify');
+  }
 
   function rebundle(){
     var stream = bundler.bundle();
@@ -42,9 +61,11 @@ function buildScript(file, watch) {
   }
 
   bundler.on('update', function() {
-    var updateStart = Date.now();
+    var now = new Date;
+    var updateStart = now.valueOf();
+    var time = '\033[30m' + `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}` + '\033[0m';
     rebundle();
-    console.log('Updated!', (Date.now() - updateStart) + 'ms');
+    console.log('[' + time + '] \033[32m[watchify] Updated!', (Date.now() - updateStart) + 'ms\033[0m');
   })
 
   // run it once the first time buildScript is called
