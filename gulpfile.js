@@ -6,8 +6,9 @@ var source = require('vinyl-source-stream');
 var watchify = require('watchify');
 var notify = require('gulp-notify');
 var rename = require('gulp-rename');
+// var sourcemaps = require('gulp-sourcemaps');
 
-gulp.task('default', ['script-dev', 'sass-dev', 'serve']);
+gulp.task('default', ['script-dev', 'sass-dev', 'sass-dev-watch', 'serve']);
 gulp.task('build', ['script', 'sass']);
 
 gulp.task('serve', () => {
@@ -20,14 +21,20 @@ gulp.task('serve', () => {
 
 gulp.task('sass-dev', () => {
   gulp.src('src/sass/main.scss')
-    .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
-    // .pipe(concat('style.css'))
+    .pipe(sass().on('error', sass.logError))
     .pipe(rename('bundle.css'))
     .pipe(gulp.dest('public/build/'));
 });
 
+gulp.task('sass-dev-watch', () => {
+  gulp.watch('src/sass/*.scss', ['sass-dev']);
+});
+
 gulp.task('sass', () => {
-  
+  gulp.src('src/sass/main.scss')
+    .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+    .pipe(rename('bundle.css'))
+    .pipe(gulp.dest('public/build/'));
 });
 
 gulp.task('script-dev', () => buildScript('main.js', true));

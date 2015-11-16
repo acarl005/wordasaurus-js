@@ -1,4 +1,4 @@
-var [a, b] = [1, 2];
+var [a, b] = [1, 6];
 
 console.log(a, b);
 
