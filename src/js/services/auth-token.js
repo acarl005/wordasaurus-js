@@ -15,6 +15,7 @@ module.exports = function authToken($window) {
       return !!factory.get();
     },
     remove: function() {
+      cachedToken = null;
       storage.removeItem('token');
     }
   };

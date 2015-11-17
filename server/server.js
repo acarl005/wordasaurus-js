@@ -2,8 +2,8 @@ var express = require('express');
 var app = express();
 var path = require('path');
 
-var userCtrl = require('./controllers/users');
-var seshCtrl = require('./controllers/sessions');
+var userCtrl = require('./controllers/users-controller');
+var seshCtrl = require('./controllers/sessions-controller');
 
 var bodyParser = require('body-parser');
 

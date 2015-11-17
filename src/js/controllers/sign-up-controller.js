@@ -5,8 +5,8 @@ module.exports = function SignUpController(User, authToken, alert) {
       password: this.password
     };
     User.create(user)
-    .success(token => {
-      authToken.set(token.token);
+    .success(res => {
+      authToken.set(res.token);
       alert('success', 'Registered', 'Welcome to Wordasaurus');
     })
     .error(err => {

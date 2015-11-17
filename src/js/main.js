@@ -4,6 +4,7 @@ require('bootstrap');
 var angular = require('angular');
 require('angular-ui-router');
 
+
 angular.module('wordasaurus', ['ui.router'])
 
 // .run(function($rootScope) {
@@ -16,10 +17,10 @@ angular.module('wordasaurus', ['ui.router'])
 
 .config(require('./config'))
 
-.controller('NavController', require('./controllers/nav'))
+.controller('NavController', require('./controllers/nav-controller'))
 
 .directive('validateEquals', require('./directives/validate-equals'))
 
 .service('alert', require('./services/alert'))
-.factory('User', require('./services/User'))
+.factory('User', require('./services/user-factory'))
 .factory('authToken', require('./services/auth-token'));

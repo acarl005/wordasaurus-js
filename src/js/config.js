@@ -15,14 +15,14 @@ module.exports = function config($stateProvider, $urlRouterProvider, $httpProvid
       url: '/in',
       parent: 'sign',
       templateUrl: '/partials/_in.html',
-      controller: require('./controllers/sign-in'),
+      controller: require('./controllers/sign-in-controller'),
       controllerAs: 'ctrl'
     })
     .state('sign.up', {
       url: '/up',
       parent: 'sign',
       templateUrl: '/partials/_up.html',
-      controller: require('./controllers/sign-up'),
+      controller: require('./controllers/sign-up-controller'),
       controllerAs: 'ctrl'
     });
 

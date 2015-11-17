@@ -5,8 +5,8 @@ module.exports = function SignInController(User, authToken, alert) {
       password: this.password
     };
     User.authenticate(user)
-    .success(token => {
-      authToken.set(token);
+    .success(res => {
+      authToken.set(res.token);
       alert('success', 'Logged in', 'Welcome back to Wordasaurus');
     })
     .error(err => {
