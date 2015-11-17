@@ -5,13 +5,7 @@
 </head>
 <body ng-app="wordasaurus">
 
-  <nav>
-    <ul>
-      <li><a ui-sref="home">home</a></li>
-      <li><a ui-sref="sign">sign in/up</a></li>
-    </ul>
-    <span class="glyphicon glyphicon-remove"></span>
-  </nav>
+  <div ng-include="'/partials/navbar.html'"></div>
 
   <div class="alert alert-{{alert.type}} animated main-alert container"
        ng-class="{'flipInY': alert.show, 'flipOutY': !alert.show, 'alert-hidden': !alert.hasBeenShown}">

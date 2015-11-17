@@ -16,6 +16,10 @@ angular.module('wordasaurus', ['ui.router'])
 
 .config(require('./config'))
 
+.controller('NavController', require('./controllers/nav'))
+
 .directive('validateEquals', require('./directives/validate-equals'))
 
-.service('alert', require('./services/alert'));
+.service('alert', require('./services/alert'))
+.factory('User', require('./services/User'))
+.factory('authToken', require('./services/auth-token'));

@@ -1,0 +1,7 @@
+<nav ng-controller="NavController as ctrl">
+  <ul>
+    <li><a ui-sref="home">home</a></li>
+    <li ng-hide="ctrl.loggedIn()"><a ui-sref="sign">sign in/up</a></li>
+    <li ng-show="ctrl.loggedIn()"><a ng-click="ctrl.logOut()">logout</a></li>
+  </ul>
+</nav>

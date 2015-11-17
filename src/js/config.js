@@ -26,6 +26,5 @@ module.exports = function config($stateProvider, $urlRouterProvider, $httpProvid
       controllerAs: 'ctrl'
     });
 
-
   // $httpProvider.interceptors.push('authInterceptor');
 }
