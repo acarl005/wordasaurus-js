@@ -1,11 +1,25 @@
 <html>
 <head>
   <title>Wordasaurus</title>
-  <link type="text/css" rel="stylesheet" href="/build/bundle.css">
+  <link rel="stylesheet" type="text/css" href="/build/bundle.css">
 </head>
-<body>
+<body ng-app="wordasaurus">
 
-  <h1>sup world</h1>
+  <nav>
+    <ul>
+      <li><a ui-sref="home">home</a></li>
+      <li><a ui-sref="sign">sign in/up</a></li>
+    </ul>
+    <span class="glyphicon glyphicon-remove"></span>
+  </nav>
+
+  <div class="alert alert-{{alert.type}} animated main-alert container"
+       ng-class="{'flipInY': alert.show, 'flipOutY': !alert.show, 'alert-hidden': !alert.hasBeenShown}">
+    <strong>{{alert.title}}</strong>
+    {{alert.message}}
+  </div>
+
+  <div ui-view></div>
 
   <script src="/build/bundle.js"></script>
 </body>

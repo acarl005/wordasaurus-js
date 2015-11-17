@@ -1,0 +1,56 @@
+<form id="register-form" role="form" name="register" ng-submit="ctrl.submit()" novalidate>
+
+  <div class="form-group" 
+       ng-class="{ 'has-error': register.email.$invalid && register.email.$dirty,
+                   'has-success': register.email.$valid }">
+    <label class="control-label">Email Address</label>
+    <input type="email" name="email" tabindex="1" class="form-control" 
+           ng-model="ctrl.email" placeholder="andy@example.org" required>
+    <span ng-show="register.email.$invalid && register.email.$dirty" 
+          class="help-block">Invalid email format.
+    </span>
+  </div>
+
+  <div class="form-group" 
+       ng-class="{ 'has-error': register.password.$invalid && register.password.$dirty,
+                   'has-success': register.password.$valid }">
+    <label class="control-label">Password</label>
+    <input type="password" name="password" tabindex="2" class="form-control" 
+           ng-model="ctrl.password" required pattern=".{6,}">
+    <span ng-show="register.password.$invalid && register.password.$dirty" 
+          class="help-block">Must be at least 6 characters.
+    </span>
+  </div>
+
+  <div class="form-group" 
+       ng-class="{ 'has-error': register.confPass.$invalid && register.confPass.$dirty,
+                   'has-success': register.confPass.$valid }">
+    <label class="control-label">Confirm Password</label>
+    <input type="password" name="confPass" tabindex="3" class="form-control" 
+           ng-model="confPass" required validate-equals="ctrl.password">
+    <span ng-show="register.confPass.$invalid && register.confPass.$dirty" 
+          class="help-block">Must match password.
+    </span>
+  </div>
+
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <input type="submit" tabindex="4" class="form-control btn btn-register" 
+               value="Register" ng-disabled="register.$invalid" />
+      </div>
+    </div>
+  </div>
+
+</form>
+
+<script type="text/javascript">
+  $(window).on('keypress', function(e) {
+    if (e.ctrlKey && e.keyCode === 2) {  // ctrl + b
+      $('input[name=email]').val('andy@example.org').trigger('change');
+      $('input[name=password]').val('corncorn').trigger('change');
+      $('input[name=confPass]').val('corncorn').trigger('change');
+    }
+  });
+</script>

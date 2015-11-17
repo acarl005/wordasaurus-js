@@ -1,0 +1,48 @@
+<form id="login-form" role="form" name="login" ng-submit="ctrl.submit()" novalidate>
+
+  <div class="form-group" 
+       ng-class="{ 'has-error': login.email.$invalid && login.email.$dirty, 
+                   'has-success': login.email.$valid }">
+    <label class="control-label">Email Address</label>
+    <input type="email" name="email" tabindex="1" class="form-control" 
+           ng-model="ctrl.email" placeholder="andy@example.org" required>
+    <span ng-show="login.email.$invalid && login.email.$dirty" 
+          class="help-block">Invalid email format.
+    </span>
+  </div>
+
+  <div class="form-group" 
+       ng-class="{ 'has-error': login.password.$invalid && login.password.$dirty,
+                   'has-success': login.password.$valid }">
+    <label class="control-label">Password</label>
+    <input type="password" name="password" tabindex="2" class="form-control" 
+           ng-model="ctrl.password" required pattern=".{6,}">
+    <span ng-show="login.password.$invalid && login.password.$dirty"
+          class="help-block">Must be at least 6 characters.
+    </span>
+  </div>
+
+  <div class="form-group text-center">
+    <input type="checkbox" tabindex="3" class="" name="remember">
+    <label for="remember">Remember Me</label>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <input type="submit" tabindex="4" class="form-control btn btn-login" 
+               value="Login" ng-disabled="login.$invalid" />
+      </div>
+    </div>
+  </div>
+
+</form>
+
+<script type="text/javascript">
+  $(window).on('keypress', function(e) {
+    if (e.ctrlKey && e.keyCode === 2) {  // ctrl + b
+      $('input[name=email]').val('andy@example.org').trigger('change');
+      $('input[name=password]').val('corncorn').trigger('change');
+    }
+  });
+</script>
