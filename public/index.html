@@ -7,10 +7,12 @@
 
   <div ng-include="'/partials/navbar.html'"></div>
 
-  <div class="alert alert-{{alert.type}} animated main-alert container"
-       ng-class="{'flipInY': alert.show, 'flipOutY': !alert.show, 'alert-hidden': !alert.hasBeenShown}">
-    <strong>{{alert.title}}</strong>
-    {{alert.message}}
+  <div class="alert-container">
+    <div class="alert alert-{{alert.type}} animated"
+         ng-class="{ flipInY: alert.show, flipOutY: !alert.show }">
+      <strong>{{ alert.title }}</strong>
+      {{ alert.message }}
+    </div>
   </div>
 
   <div ui-view></div>

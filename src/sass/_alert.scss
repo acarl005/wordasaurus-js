@@ -1,8 +1,11 @@
-.main-alert {
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-.alert-hidden {
-  visibility: hidden;
+.alert-container {
+  position: absolute;
+  top: 80px;
+  width: 100%;
+  z-index: 99;
+  .alert {
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto;
+  }
 }

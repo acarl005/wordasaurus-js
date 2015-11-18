@@ -1,6 +1,7 @@
 function config($stateProvider, $urlRouterProvider, $httpProvider) {
 
   $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.when('/sign', '/sign/in');
 
   $stateProvider
   .state('home', {
