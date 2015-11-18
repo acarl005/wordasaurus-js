@@ -1,7 +1,27 @@
-<nav ng-controller="NavController as ctrl">
-  <ul>
-    <li><a ui-sref="home">home</a></li>
-    <li ng-hide="ctrl.loggedIn()"><a ui-sref="sign">sign in/up</a></li>
-    <li ng-show="ctrl.loggedIn()"><a ng-click="ctrl.logOut()">logout</a></li>
-  </ul>
+<nav class="navbar navbar-default" ng-controller="NavController as ctrl">
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#sref-list" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" ui-sref="home">Wordasaurus</a>
+    </div>
+
+
+    <div class="navbar-collapse collapse" id="sref-list" 
+         aria-expanded="false">
+         
+      <ul class="nav navbar-nav navbar-right">
+        <li ui-sref-active="active"><a ui-sref="home">Home</a></li>
+        <li ui-sref-active="active" ng-hide="ctrl.getUser()"><a ui-sref="sign.in">Log In</a></li>
+        <li ng-show="ctrl.getUser()"><a ui-sref="profile">{{ ctrl.getUser().email }}</a></li>
+        <li ng-show="ctrl.getUser()"><a ng-click="ctrl.logOut()">Log Out</a></li>
+      </ul>
+
+    </div>
+  </div>
 </nav>

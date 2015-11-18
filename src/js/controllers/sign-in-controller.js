@@ -1,4 +1,4 @@
-module.exports = function SignInController(User, authToken, alert) {
+function SignInController(User, alert, $state) {
   this.submit = function() {
     var user = {
       email: this.email,
@@ -6,11 +6,15 @@ module.exports = function SignInController(User, authToken, alert) {
     };
     User.authenticate(user)
     .success(res => {
-      authToken.set(res.token);
       alert('success', 'Logged in', 'Welcome back to Wordasaurus');
+      $state.go('home');
     })
     .error(err => {
       alert('danger', 'Error', err.message);
     });
   }
 }
+
+SignInController.$inject = ['User', 'alert', '$state'];
+
+module.exports = SignInController;

@@ -7,7 +7,7 @@
     "node": "4.2"
   },
   "scripts": {
-    "start": "node server/server.js",
+    "start": "gulp build && node server/server.js",
     "start-dev": "gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,6 +16,7 @@
   "devDependencies": {},
   "dependencies": {
     "angular": "^1.4.7",
+    "angular-animate": "^1.4.7",
     "angular-ui-router": "^0.2.15",
     "babel-preset-es2015": "^6.1.18",
     "babelify": "^7.2.0",

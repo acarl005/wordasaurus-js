@@ -1,4 +1,4 @@
-module.exports = function SignUpController(User, authToken, alert) {
+function SignUpController(User, alert, $state) {
   this.submit = function() {
     var user = { 
       email: this.email,
@@ -6,11 +6,15 @@ module.exports = function SignUpController(User, authToken, alert) {
     };
     User.create(user)
     .success(res => {
-      authToken.set(res.token);
       alert('success', 'Registered', 'Welcome to Wordasaurus');
+      $state.go('home');
     })
     .error(err => {
       alert('danger', 'Error', err.message);
     });
   }
 }
+
+SignUpController.$inject = ['User', 'alert', '$state'];
+
+module.exports = SignUpController;

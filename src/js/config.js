@@ -1,11 +1,11 @@
-module.exports = function config($stateProvider, $urlRouterProvider, $httpProvider) {
+function config($stateProvider, $urlRouterProvider, $httpProvider) {
 
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
   .state('home', {
     url: '/',
-    template: '<main>home</main>'
+    templateUrl: '/partials/home.html'
   })
   .state('sign', {
     url: '/sign',
@@ -15,16 +15,24 @@ module.exports = function config($stateProvider, $urlRouterProvider, $httpProvid
       url: '/in',
       parent: 'sign',
       templateUrl: '/partials/_in.html',
-      controller: require('./controllers/sign-in-controller'),
+      controller: 'SignInController',
       controllerAs: 'ctrl'
     })
     .state('sign.up', {
       url: '/up',
       parent: 'sign',
       templateUrl: '/partials/_up.html',
-      controller: require('./controllers/sign-up-controller'),
+      controller: 'SignUpController',
       controllerAs: 'ctrl'
-    });
+    })
+  .state('profile', {
+    url: '/profile',
+    template: '<div>profile</div>'
+  });
 
-  // $httpProvider.interceptors.push('authInterceptor');
+  $httpProvider.interceptors.push('authInterceptor');
 }
+
+config.$inject = ['$stateProvider', '$urlRouterProvider', '$httpProvider'];
+
+module.exports = config;

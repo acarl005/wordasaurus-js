@@ -1,4 +1,4 @@
-module.exports = function alert($rootScope, $timeout) {
+function alert($rootScope, $timeout) {
   var alertTimeout;
   return function(type, title, message, timeout) {
     $rootScope.alert = {
@@ -14,3 +14,7 @@ module.exports = function alert($rootScope, $timeout) {
     }, timeout || 3000);
   }
 }
+
+alert.$inject = ['$rootScope', '$timeout'];
+
+module.exports = alert;

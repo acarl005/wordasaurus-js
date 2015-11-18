@@ -8,7 +8,7 @@ var notify = require('gulp-notify');
 var rename = require('gulp-rename');
 var sourcemaps = require('gulp-sourcemaps');
 
-gulp.task('default', ['script-dev', 'sass-dev', 'sass-dev-watch', 'serve']);
+gulp.task('default', ['script-dev', 'sass-dev', 'sass-watch', 'serve']);
 gulp.task('build', ['script', 'sass']);
 
 gulp.task('serve', () => {
@@ -28,7 +28,7 @@ gulp.task('sass-dev', () => {
     .pipe(gulp.dest('public/build/'));
 });
 
-gulp.task('sass-dev-watch', () => {
+gulp.task('sass-watch', () => {
   gulp.watch('src/sass/*.scss', ['sass-dev']);
 });
 

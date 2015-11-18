@@ -7,6 +7,7 @@ var seshCtrl = require('./controllers/sessions-controller');
 
 var bodyParser = require('body-parser');
 
+
 app.use(bodyParser.json());
 app.use('/', express.static(path.resolve(__dirname + '/../public')));
 

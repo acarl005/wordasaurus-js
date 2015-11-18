@@ -1,4 +1,4 @@
-module.exports = function authToken($window) {
+function authToken($window) {
   var storage = $window.localStorage;
   var cachedToken;
   var factory = {
@@ -12,7 +12,7 @@ module.exports = function authToken($window) {
       return cachedToken;
     },
     exists: function() {
-      return !!factory.get();
+      return factory.get();
     },
     remove: function() {
       cachedToken = null;
@@ -21,3 +21,7 @@ module.exports = function authToken($window) {
   };
   return factory;
 }
+
+authToken.$inject = ['$window'];
+
+module.exports = authToken;
