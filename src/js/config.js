@@ -1,6 +1,9 @@
 function config($stateProvider, $urlRouterProvider, $httpProvider) {
 
-  $urlRouterProvider.otherwise('/');
+  $httpProvider.interceptors.push('authInterceptor');
+
+  $urlRouterProvider.otherwise('/404');
+  $urlRouterProvider.when('', '/');
   $urlRouterProvider.when('/sign', '/sign/in');
 
   $stateProvider
@@ -28,10 +31,14 @@ function config($stateProvider, $urlRouterProvider, $httpProvider) {
     })
   .state('profile', {
     url: '/profile',
-    template: '<div>profile</div>'
+    templateUrl: '/partials/documents.html',
+    controller: 'DocumentController',
+    controllerAs: 'ctrl'
+  })
+  .state('404', {
+    url: '/404',
+    template: '<h1>404 Error</h1>'
   });
-
-  $httpProvider.interceptors.push('authInterceptor');
 }
 
 config.$inject = ['$stateProvider', '$urlRouterProvider', '$httpProvider'];

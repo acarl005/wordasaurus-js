@@ -1,7 +1,7 @@
 function userFactory($http, authToken) {
   var currentUser;
   return {
-    create: function(info) {
+    create: info => {
       return $http.post('/users', info)
       .success(res => {
         authToken.set(res.token);
@@ -15,7 +15,7 @@ function userFactory($http, authToken) {
       });
     },
 
-    current: function() {
+    current: () => {
       if (!currentUser) {
         var jwt = authToken.get();
         if (!jwt) return null;
@@ -25,7 +25,7 @@ function userFactory($http, authToken) {
       return currentUser;
     },
 
-    logout: function() {
+    logout: () => {
       currentUser = null;
       authToken.remove();
     }

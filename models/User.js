@@ -9,10 +9,12 @@ var bcrypt = require('bcrypt-nodejs');
 
 var userSchema = new Schema({
   'email': { type: String, required: true, index: { unique: true } },
-  'password': { type: String, required:true },
+  'password': { type: String, required: true },
+  'documents': [{ type: Schema.Types.ObjectId, ref: 'Document' }],
   'createdAt': { type: Date, default: Date.now },
   'updatedAt': { type: Date, default: Date.now }
 });
+
 
 userSchema.pre('save', function(next){
   this.updatedAt = Date.now();
@@ -21,6 +23,11 @@ userSchema.pre('save', function(next){
 
 userSchema.pre('update', function() {
   this.update({}, { $set: { updatedAt: Date.now() } });
+});
+
+userSchema.pre('remove', function(next) {
+  var user = this;
+  this.model('Document').remove({ _id: { $in: user.documents } }, next);
 });
 
 

@@ -15,7 +15,10 @@ gulp.task('serve', () => {
   nodemon({
     script: 'server/server.js',
     ext: 'js',
-    watch: ['server/', 'public/', 'models/']
+    watch: ['server/', 'public/', 'models/'],
+    env: {
+      NODE_ENV: 'development'
+    }
   });
 });
 

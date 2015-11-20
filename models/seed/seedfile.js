@@ -7,23 +7,12 @@ require('../all-models').toContext(global);
 // ADD SEEDS BELOW
 //------------------------
 
+User.findOne({ email: 'andy@example.org' }, function(err, data) {
 
-// suggested module for generating fake contextual data
-// var Faker = require('faker');
-
-
-// For Example
-
-// CoolUser.create([
-//   { name: 'andy', age: 24 },
-//   { name: 'alex', age: 23 },
-//   { name: Faker.name.firstName(), age: Faker.random.number() }
-// ])
-
-// .then(() => {
-//   console.log("Seed complete!")  
-//   mongoose.connection.close();
-// });
-
-// be sure to close the connection once the queries are done
-
+  Document.create({
+    title: 'second doc',
+    user: data._id
+  }, function() {
+    mongoose.connection.close();
+  });
+});

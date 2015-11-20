@@ -1,8 +1,10 @@
-// place connection string here
-// e.g. var uri = 'mongodb://andy:corn@ds051334.mongolab.com:51334/cli';
-// or   var uri = 'mongodb://andy:corn@localhost:27017/cli';
-// or   var uri = config.get('mongo');
-var uri = 'mongodb://andy:corn@localhost:27017/wordasaurus';
+var env = process.env;
+if (env.NODE_ENV === 'development' || env.NODE_ENV === 'test') {
+  require('dotenv').load({ path: `${__dirname}/../.env.${env.NODE_ENV}` });
+}
+
+var uri = process.env.MONGO;
+
 if (!uri) throw new Error('\033[31mYou need to provide the connection string. \
 You can open "models/connection-string.js" and export it or use the "setUri" command.\033[0m');
 else {

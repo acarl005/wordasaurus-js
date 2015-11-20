@@ -1,3 +1,6 @@
+$red: #B94A48;
+$light-blue: #3399F3;
+
 @import "https://fonts.googleapis.com/css?family=Roboto+Slab";
 
 @import "bootstrap";
@@ -11,8 +14,12 @@ body {
   padding-bottom: 80px;
 }
 
-a {
+a, .pointer {
   cursor: pointer;
+}
+
+.red {
+  color: $red;
 }
 
 .navbar-inverse .navbar-nav > .active > a {
@@ -27,4 +34,32 @@ a {
   background: -o-linear-gradient(#bfbfbf, #e6e6e6); 
   background: -moz-linear-gradient(#bfbfbf, #e6e6e6);
   background: linear-gradient(#bfbfbf, #e6e6e6); 
+}
+
+.doc-card, .panel-doc {
+  transition: 0.5s;
+  height: 175px;
+}
+
+.not-edit {
+  .panel-new {
+    height: 100%;
+    .panel-heading { 
+      background-color: $light-blue; 
+      color: white;
+    }
+    .panel-body {
+      background-color: #eee;
+      color: white;
+      text-align: center;
+    }
+    .panel-body:hover {
+      background-color: white;
+      color: #ddd;
+      cursor: pointer;
+    }
+  } 
+  .glyphicon-plus {
+    font-size: 50px;
+  }
 }

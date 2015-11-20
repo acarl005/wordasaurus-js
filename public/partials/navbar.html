@@ -17,9 +17,9 @@
          
       <ul class="nav navbar-nav navbar-right">
         <li ui-sref-active="active"><a ui-sref="home">Home</a></li>
-        <li ui-sref-active="active" ng-hide="ctrl.getUser()"><a ui-sref="sign">Log In</a></li>
+        <li ui-sref-active="active" ng-hide="ctrl.getUser()"><a ui-sref="sign">Login</a></li>
         <li ng-show="ctrl.getUser()"><a ui-sref="profile">{{ ctrl.getUser().email }}</a></li>
-        <li ng-show="ctrl.getUser()"><a ng-click="ctrl.logOut()">Log Out</a></li>
+        <li ng-show="ctrl.getUser()"><a ng-click="ctrl.logOut()">Logout</a></li>
       </ul>
 
     </div>
