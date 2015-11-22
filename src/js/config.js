@@ -9,7 +9,9 @@ function config($stateProvider, $urlRouterProvider, $httpProvider) {
   $stateProvider
   .state('home', {
     url: '/',
-    templateUrl: '/partials/home.html'
+    templateUrl: '/partials/home.html',
+    controller: 'HomeController',
+    controllerAs: 'ctrl'
   })
   .state('sign', {
     url: '/sign',
@@ -31,13 +33,19 @@ function config($stateProvider, $urlRouterProvider, $httpProvider) {
     })
   .state('profile', {
     url: '/profile',
-    templateUrl: '/partials/documents.html',
+    templateUrl: '/partials/profile.html',
+    controller: 'ProfileController',
+    controllerAs: 'ctrl'
+  })
+  .state('document', {
+    url: '/documents/:id',
+    template: '<h1>{{ctrl.doc}}</h1>',
     controller: 'DocumentController',
     controllerAs: 'ctrl'
   })
   .state('404', {
     url: '/404',
-    template: '<h1>404 Error</h1>'
+    template: '<div class="container"><h1>404 Error</h1></div>'
   });
 }
 

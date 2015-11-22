@@ -21,6 +21,7 @@ app.post('/users', userCtrl.create, seshCtrl.create);
 app.post('/sessions', userCtrl.find, seshCtrl.create);
 
 app.get('/documents', seshCtrl.verify, docsCtrl.index);
+app.get('/documents/:id', seshCtrl.verify, docsCtrl.show);
 app.post('/documents', seshCtrl.verify, docsCtrl.create);
 
 var port = env.PORT || 3000;

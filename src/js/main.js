@@ -10,9 +10,11 @@ angular.module('wordasaurus', ['ui.router', 'ngAnimate'])
 
 .config(require('./config'))
 
+.controller('HomeController', require('./controllers/home-controller'))
 .controller('NavController', require('./controllers/nav-controller'))
 .controller('SignInController', require('./controllers/sign-in-controller'))
 .controller('SignUpController', require('./controllers/sign-up-controller'))
+.controller('ProfileController', require('./controllers/profile-controller'))
 .controller('DocumentController', require('./controllers/document-controller'))
 
 .directive('validateEquals', require('./directives/validate-equals'))

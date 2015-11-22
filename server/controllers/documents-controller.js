@@ -8,6 +8,15 @@ module.exports = {
     });
   },
 
+  show: function(req, res) {
+    Document.findById(req.params.id, function(err, doc) {
+      if (err) return res.status(500).send(err);
+      if (doc.user != req.user._id) 
+        return res.status(401).send({ message: 'This is not your document.' });
+      res.send(doc);
+    });
+  },
+
   create: function(req, res) {
     Document.create({
       title: req.body.title,
