@@ -25,4 +25,6 @@ app.get('/documents/:id', seshCtrl.verify, docsCtrl.show);
 app.post('/documents', seshCtrl.verify, docsCtrl.create);
 
 var port = env.PORT || 3000;
-app.listen(port, console.log.bind(console, 'listening at http://localhost:' + port)); 
+app.listen(port, console.log.bind(console, 'listening at http://localhost:' + port));
+
+module.exports = app;

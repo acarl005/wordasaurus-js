@@ -14,7 +14,9 @@ describe('Document model', function() {
       function(err, user) {
         if (err) throw new Error(err);
         andy = user;
-        done();
+        Document.remove({}, function() {
+          done();
+        });
       });
     });
   });
@@ -73,9 +75,9 @@ describe('Document model', function() {
   it('should update the updatedAt field on update', function(done) {
     setTimeout(function() {
       Document.update(
-        { _id: doc._id }, 
+        { _id: doc._id },
         { $set: { title: 'new title'} },
-        null, 
+        null,
         function(err, status) {
           if (err) throw new Error(err);
           Document.findById(doc._id, function(err, saved) {
@@ -93,9 +95,9 @@ describe('Document model', function() {
   it('should update the updatedAt field on findOneAndUpdate', function(done) {
     setTimeout(function() {
       Document.findOneAndUpdate(
-        { _id: doc._id }, 
+        { _id: doc._id },
         { $set: { title: 'newer title' } },
-        null, 
+        null,
         function(err, record) {
           if (err) throw new Error(err);
           Document.findById(doc._id, function(err, saved) {

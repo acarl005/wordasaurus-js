@@ -78,7 +78,7 @@ function buildScript(file, watch) {
     var time = '\033[30m' + `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}` + '\033[0m';
     rebundle();
     console.log('[' + time + '] \033[32m[watchify] Updated!', (Date.now() - updateStart) + 'ms\033[0m');
-  })
+  });
 
   // run it once the first time buildScript is called
   return rebundle();
