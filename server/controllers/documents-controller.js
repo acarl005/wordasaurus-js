@@ -26,4 +26,24 @@ function create(req, res) {
   });
 }
 
-module.exports = { index, show, create };
+function destroy(req, res) {
+  Document.remove({
+    _id: req.params.id
+  }, (err) => {
+    if (err) return res.status(500).send(err);
+    res.status(204).send({});
+  });
+}
+
+function update(req, res) {
+  Document.findById(req.params.id, (err, doc) => {
+    if (err) return res.status(500).send(err);
+    doc.body = req.body.body;
+    doc.save(err => {
+      if (err) return res.status(500).send(err);
+      res.send();
+    });
+  });
+}
+
+module.exports = { index, show, create, destroy, update };

@@ -9,6 +9,7 @@ $light-blue: #3399F3;
 @import "sign-form";
 @import "alert";
 @import "home";
+@import "editor";
 
 body {
   padding-bottom: 80px;
@@ -23,17 +24,17 @@ a, .pointer {
 }
 
 .navbar-inverse .navbar-nav > .active > a {
-  background: -webkit-linear-gradient(#101923, #38587a); 
-  background: -o-linear-gradient(#101923, #38587a); 
+  background: -webkit-linear-gradient(#101923, #38587a);
+  background: -o-linear-gradient(#101923, #38587a);
   background: -moz-linear-gradient(#101923, #38587a);
-  background: linear-gradient(#101923, #38587a); 
+  background: linear-gradient(#101923, #38587a);
 }
 
 .navbar-default .navbar-nav > .active > a {
-  background: -webkit-linear-gradient(#bfbfbf, #e6e6e6); 
-  background: -o-linear-gradient(#bfbfbf, #e6e6e6); 
+  background: -webkit-linear-gradient(#bfbfbf, #e6e6e6);
+  background: -o-linear-gradient(#bfbfbf, #e6e6e6);
   background: -moz-linear-gradient(#bfbfbf, #e6e6e6);
-  background: linear-gradient(#bfbfbf, #e6e6e6); 
+  background: linear-gradient(#bfbfbf, #e6e6e6);
 }
 
 .doc-card, .panel-doc {
@@ -44,8 +45,8 @@ a, .pointer {
 .not-edit {
   .panel-new {
     height: 100%;
-    .panel-heading { 
-      background-color: $light-blue; 
+    .panel-heading {
+      background-color: $light-blue;
       color: white;
     }
     .panel-body {
@@ -58,7 +59,7 @@ a, .pointer {
       color: #ddd;
       cursor: pointer;
     }
-  } 
+  }
   .glyphicon-plus {
     font-size: 50px;
   }

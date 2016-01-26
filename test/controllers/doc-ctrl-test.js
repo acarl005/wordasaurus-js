@@ -65,4 +65,18 @@ describe('document controller', () => {
       done();
     });
   });
+
+  it('should delete the document', done => {
+    request(app).delete('/documents/' + id)
+    .set('Authorization', token)
+    .expect(204)
+    .end((err) => {
+      expect(err).to.not.exist;
+      Document.count({}, (err, num) => {
+        expect(err).to.not.exist;
+        expect(num).to.eql(0);
+        done();
+      });
+    });
+  });
 });

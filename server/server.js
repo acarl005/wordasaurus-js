@@ -23,6 +23,8 @@ app.post('/sessions', userCtrl.find, seshCtrl.create);
 app.get('/documents', seshCtrl.verify, docsCtrl.index);
 app.get('/documents/:id', seshCtrl.verify, docsCtrl.show);
 app.post('/documents', seshCtrl.verify, docsCtrl.create);
+app.delete('/documents/:id', seshCtrl.verify, docsCtrl.destroy);
+app.put('/documents/:id', seshCtrl.verify, docsCtrl.update);
 
 var port = env.PORT || 3000;
 app.listen(port, console.log.bind(console, 'listening at http://localhost:' + port));

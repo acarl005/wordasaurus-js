@@ -12,13 +12,13 @@
     </div>
 
 
-    <div class="navbar-collapse collapse" id="sref-list" 
+    <div class="navbar-collapse collapse" id="sref-list"
          aria-expanded="false">
-         
+
       <ul class="nav navbar-nav navbar-right">
         <li ui-sref-active="active"><a ui-sref="home">Home</a></li>
         <li ui-sref-active="active" ng-hide="ctrl.getUser()"><a ui-sref="sign">Login</a></li>
-        <li ng-show="ctrl.getUser()"><a ui-sref="profile">{{ ctrl.getUser().email }}</a></li>
+        <li ng-show="ctrl.getUser()"><a ui-sref="profile">Profile</a></li>
         <li ng-show="ctrl.getUser()"><a ng-click="ctrl.logOut()">Logout</a></li>
       </ul>
 

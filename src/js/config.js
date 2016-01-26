@@ -39,8 +39,8 @@ function config($stateProvider, $urlRouterProvider, $httpProvider) {
   })
   .state('document', {
     url: '/documents/:id',
-    template: '<h1>{{ctrl.doc}}</h1>',
-    controller: 'DocumentController',
+    templateUrl: '/partials/editor.html',
+    controller: 'EditorController',
     controllerAs: 'ctrl'
   })
   .state('404', {

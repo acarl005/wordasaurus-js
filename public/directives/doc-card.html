@@ -5,7 +5,10 @@
   <div class="panel-body">
     {{ doc.wordCount }} words
   </div>
-  <a ui-sref="document({ id: doc._id })">
+  <a ui-sref="document({ id: doc._id })" title="edit">
     <span class="glyphicon glyphicon-pencil"></span>
+  </a>
+  <a href ng-click="delete()" title="delete">
+    <span class="glyphicon glyphicon-trash"></span>
   </a>
 </div>
