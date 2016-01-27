@@ -1,10 +1,32 @@
 <div class="container">
 
-  <h1>Edit</h1>
-  <div class="form-group">
-    <textarea ng-model="ctrl.doc.body" class="form-control" id="edit-window"></textarea>
+  <div ng-show="ctrl.edit">
+    <h1>Edit</h1>
+    <div class="form-group">
+      <textarea ng-model="ctrl.doc.body" class="form-control" id="edit-window"></textarea>
+    </div>
   </div>
 
+  <div ng-hide="ctrl.edit">
+    <h1 ng-hide="ctrl.edit">Thesaurus</h1>
+    <section class="word-select">
+      <span ng-repeat="word in ctrl.doc.body.split(' ')"
+            ng-click="ctrl.setActive(word, $index)">
+        {{ word }}
+      </span>
+    </section>
+  </div>
+
+  <button class="btn btn-info"
+          ng-click="ctrl.edit = false"
+          ng-show="ctrl.edit">
+    Thesaurus
+  </button>
+  <button class="btn btn-default"
+          ng-click="ctrl.edit = true"
+          ng-hide="ctrl.edit">
+    Edit
+  </button>
   <button class="btn btn-primary" ng-click="ctrl.save()">Save</button>
 
 </div>

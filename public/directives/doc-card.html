@@ -3,6 +3,7 @@
     <h4>{{ doc.title }}</h4>
   </div>
   <div class="panel-body">
+    <p>{{ doc.preview }}</p>
     {{ doc.wordCount }} words
   </div>
   <a ui-sref="document({ id: doc._id })" title="edit">

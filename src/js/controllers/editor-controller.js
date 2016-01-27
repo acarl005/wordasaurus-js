@@ -1,4 +1,5 @@
 function EditorController($stateParams, Document, alert) {
+  this.edit = false;
   Document.get($stateParams.id)
   .success(doc => {
     this.doc = doc;
@@ -14,6 +15,9 @@ function EditorController($stateParams, Document, alert) {
     .error(err => {
       alert('danger', 'Error', err.message);
     });
+  };
+  this.setActive = (word, i) => {
+    console.log(word, i);
   };
 }
 
