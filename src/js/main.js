@@ -24,5 +24,6 @@ angular.module('wordasaurus', ['ui.router', 'ngAnimate'])
 .service('alert', require('./services/alert'))
 .factory('User', require('./services/user-factory'))
 .factory('Document', require('./services/document-factory'))
+.factory('Synonym', require('./services/synonym-factory'))
 .factory('authToken', require('./services/auth-token'))
 .factory('authInterceptor', require('./services/auth-interceptor'));

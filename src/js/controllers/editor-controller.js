@@ -1,4 +1,4 @@
-function EditorController($stateParams, Document, alert) {
+function EditorController($stateParams, Document, Synonym, alert) {
   this.edit = false;
   Document.get($stateParams.id)
   .success(doc => {
@@ -17,10 +17,16 @@ function EditorController($stateParams, Document, alert) {
     });
   };
   this.setActive = (word, i) => {
-    console.log(word, i);
+    Synonym.get(word)
+    .success(syns => {
+      console.log(syns);
+    })
+    .error(err => {
+      alert('danger', 'Error', err.message);
+    });
   };
 }
 
-EditorController.$inject = ['$stateParams', 'Document', 'alert'];
+EditorController.$inject = ['$stateParams', 'Document', 'Synonym', 'alert'];
 
 module.exports = EditorController;
