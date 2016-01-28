@@ -61,7 +61,7 @@ userSchema.methods.toJSON = function() {
 
 userSchema.path('email').validate(function (email) {
    var emailRegex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-   return emailRegex.test(email); 
+   return emailRegex.test(email);
 }, 'The email is improperly formatted.');
 
 

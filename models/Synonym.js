@@ -5,7 +5,7 @@ if (mongoose.connection.readyState === 0) {
 }
 
 
-var newSchema = new Schema({
+var synSchema = new Schema({
   'word': { type: String },
   'verb': { type: Schema.Types.Mixed },
   'noun': { type: Schema.Types.Mixed },
@@ -15,19 +15,27 @@ var newSchema = new Schema({
   'updatedAt': { type: Date, default: Date.now }
 });
 
-newSchema.pre('save', function(next){
+synSchema.pre('save', function(next){
   this.updatedAt = Date.now();
   next();
 });
 
-newSchema.pre('update', function() {
+synSchema.pre('update', function() {
   this.update({}, { $set: { updatedAt: Date.now() } });
 });
 
-newSchema.pre('findOneAndUpdate', function() {
+synSchema.pre('findOneAndUpdate', function() {
   this.update({}, { $set: { updatedAt: Date.now() } });
 });
 
+synSchema.methods.toJSON = function() {
+  var data = this.toObject();
+  delete data._id;
+  delete data.__v;
+  delete data.createdAt;
+  delete data.updatedAt;
+  delete data.word;
+  return data;
+};
 
-
-module.exports = mongoose.model('Synonym', newSchema);
+module.exports = mongoose.model('Synonym', synSchema);

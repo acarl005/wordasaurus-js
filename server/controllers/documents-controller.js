@@ -28,7 +28,8 @@ function create(req, res) {
 
 function destroy(req, res) {
   Document.remove({
-    _id: req.params.id
+    _id: req.params.id,
+    user: req.user._id
   }, (err) => {
     if (err) return res.status(500).send(err);
     res.status(204).send({});
@@ -36,7 +37,10 @@ function destroy(req, res) {
 }
 
 function update(req, res) {
-  Document.findById(req.params.id, (err, doc) => {
+  Document.findOne({
+    _id: req.params.id,
+    user: req.user._id
+  }, (err, doc) => {
     if (err) return res.status(500).send(err);
     doc.body = req.body.body;
     doc.save(err => {

@@ -5,7 +5,7 @@ var Synonym = require('../../models/Synonym');
 function index(req, res, next) {
   Synonym.findOne({ word: req.params.word }, (err, syns) => {
     if (err) return res.status(500).send(err);
-    if (syns) return res.send(syns);
+    if (syns) return res.send(syns.toJSON());
     next();
   });
 }
@@ -20,7 +20,7 @@ function create(req, res) {
     data.word = word;
     Synonym.create(data, (err, word) => {
       if (err) return res.status(500).send(err);
-      res.send(word);
+      res.send(word.toJSON());
     });
   });
 }

@@ -19,7 +19,7 @@ function EditorController($stateParams, Document, Synonym, alert) {
   this.setActive = (word, i) => {
     Synonym.get(word)
     .success(syns => {
-      console.log(syns);
+      this.syns = syns;
     })
     .error(err => {
       alert('danger', 'Error', err.message);

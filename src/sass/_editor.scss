@@ -8,3 +8,16 @@
     content: ' ';
   }
 }
+
+.syn-display {
+  .label {
+    margin-right: 3px;
+    margin-bottom: 2px;
+    display: inline-block;
+    &:hover {
+      background-color: rgb(19, 155, 241);
+      transition: 0.5s;
+      cursor: pointer;
+    }
+  }
+}
