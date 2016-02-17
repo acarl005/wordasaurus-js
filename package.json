@@ -39,6 +39,7 @@
     "mongoose": "^4.2.6",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
+    "request": "^2.69.0",
     "supertest": "^1.1.0",
     "uglifyify": "^3.0.1",
     "vinyl-source-stream": "^1.1.0",
