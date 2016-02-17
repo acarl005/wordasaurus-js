@@ -1,5 +1,5 @@
 function EditorController($stateParams, Document, Synonym, alert) {
-  this.edit = false;
+  this.edit = true;
   Document.get($stateParams.id)
   .success(doc => {
     this.doc = doc;
@@ -8,7 +8,7 @@ function EditorController($stateParams, Document, Synonym, alert) {
     alert('danger', 'Error', err.message);
   });
   this.save = () => {
-    Document.put(this.doc)
+    Document.update(this.doc)
     .success(() => {
       alert('success', 'Saved');
     })
@@ -17,13 +17,22 @@ function EditorController($stateParams, Document, Synonym, alert) {
     });
   };
   this.setActive = (word, i) => {
+    this.activeIndex = i;
     Synonym.get(word)
     .success(syns => {
       this.syns = syns;
     })
     .error(err => {
       alert('danger', 'Error', err.message);
+      this.syns = null;
     });
+  };
+  this.replaceActive = word => {
+    var body = this.doc.body.split(' ');
+    body[this.activeIndex] = word;
+    this.doc.body = body.join(' ');
+    this.activeIndex = null;
+    this.syns = null;
   };
 }
 

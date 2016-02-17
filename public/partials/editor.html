@@ -10,17 +10,18 @@
   <div ng-hide="ctrl.edit" class="thesaurus">
     <h1>Thesaurus</h1>
     <section class="word-select">
-      <span ng-repeat="word in ctrl.doc.body.split(' ')"
-            ng-click="ctrl.setActive(word, $index)">
+      <span ng-repeat="word in ctrl.doc.body.split(' ') track by $index"
+            ng-click="ctrl.setActive(word, $index)"
+            ng-class="{ active: ctrl.activeIndex === $index }">
         {{ word }}
       </span>
     </section>
     <div class="row syn-display">
-      <div class="col-md-4" ng-repeat="(part, things) in ctrl.syns">
+      <div class="col-md-4" ng-repeat="(part, data) in ctrl.syns">
         <section class="well">
           <h3>{{part}}</h3>
           <article>
-            <span class="label label-default" ng-repeat="syn in things.syn">{{ syn }}</span>
+            <span class="label label-default" ng-repeat="syn in data.syn" ng-click="ctrl.replaceActive(syn)">{{ syn }}</span>
           </article>
         </section>
       </div>

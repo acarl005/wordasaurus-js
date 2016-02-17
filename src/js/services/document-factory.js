@@ -11,8 +11,8 @@ function DocumentFactory($http) {
     destroy: id => {
       return $http.delete('/documents/' + id);
     },
-    put: doc => {
-      return $http.put('/documents/' + doc._id, { body: doc.body });
+    update: doc => {
+      return $http.put('/documents/' + doc._id, { body: doc.body.trim() });
     }
   };
 }

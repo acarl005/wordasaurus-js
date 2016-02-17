@@ -4,8 +4,22 @@
 }
 
 .word-select {
-  span::after {
-    content: ' ';
+  height: 400px;
+  overflow: auto;
+  margin-bottom: 10px;
+  span {
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    &::after {
+      content: ' ';
+    }
+  }
+  .active {
+    color: black;
+    font-weight: 800;
+    font-size: 18px;
   }
 }
 

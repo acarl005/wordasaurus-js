@@ -4,12 +4,16 @@
   </div>
   <div class="panel-body">
     <p>{{ doc.preview }}</p>
-    {{ doc.wordCount }} words
   </div>
-  <a ui-sref="document({ id: doc._id })" title="edit">
-    <span class="glyphicon glyphicon-pencil"></span>
-  </a>
-  <a href ng-click="delete()" title="delete">
-    <span class="glyphicon glyphicon-trash"></span>
-  </a>
+  <div class="panel-footer">
+    {{ doc.wordCount }} words
+    <span class="pull-right">
+      <a ui-sref="document({ id: doc._id })" title="edit">
+        <span class="glyphicon glyphicon-pencil"></span>
+      </a>
+      <a href ng-click="delete()" title="delete">
+        <span class="glyphicon glyphicon-trash"></span>
+      </a>
+    </span>
+  </div>
 </div>

@@ -3,10 +3,14 @@
 
     <div ng-hide="cardCtrl.edit">
       <div class="panel-heading">
-        <h5>New Document</h5>
+        <h4>New Document</h4>
       </div>
       <div class="panel-body" ng-click="cardCtrl.edit = true">
-        <span class="glyphicon glyphicon-plus"></span> 
+        <div class="circle">
+          <p>
+            <span class="glyphicon glyphicon-plus"></span>
+          </p>
+        </div>
       </div>
     </div>
 
@@ -18,7 +22,7 @@
         <form class="form-horizontal" ng-submit="cardCtrl.submit()">
 
           <div class="form-group">
-            <label class="col-md-3 control-label" for="title">New Title</label>  
+            <label class="col-md-3 control-label" for="title">New Title</label>
             <div class="col-md-6">
               <input id="title" name="title" type="text" class="form-control input-md" required="" ng-model="cardCtrl.title">
             </div>
@@ -32,5 +36,5 @@
     </div>
 
   </div>
-  
+
 </div>

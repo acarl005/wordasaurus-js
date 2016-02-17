@@ -14,6 +14,9 @@ function create(req, res) {
   var word = req.params.word;
   thesaurus.get(word, (err, resp, data) => {
     if (err) return res.status(500).send(err);
+    if (resp.statusCode === 404) {
+      return res.status(404).send({ message: 'Could not find synonyms for "' + word + '".'});
+    }
     if (resp.statusCode !== 200) {
       return res.status(resp.statusCode).send(resp);
     }

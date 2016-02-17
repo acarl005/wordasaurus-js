@@ -37,9 +37,32 @@ a, .pointer {
   background: linear-gradient(#bfbfbf, #e6e6e6);
 }
 
-.doc-card, .panel-doc {
+.panel-new {
   transition: 0.5s;
-  height: 175px;
+  .panel-body {
+    transition: 0.5s;
+    height: 175px;
+  }
+}
+
+.panel-doc {
+  transition: 0.5s;
+  .panel-heading {
+    h4 {
+      color: white;
+    }
+    background: -webkit-linear-gradient(#111, #ccc);
+    background: -o-linear-gradient(#111, #ccc);
+    background: -moz-linear-gradient(#111, #ccc);
+    background: linear-gradient(#111, #ccc);
+  }
+  .panel-body {
+    height: 135px;
+    overflow: hidden;
+  }
+  .glyphicon:hover {
+    color: black;
+  }
 }
 
 .not-edit {
@@ -51,7 +74,7 @@ a, .pointer {
     }
     .panel-body {
       background-color: #eee;
-      color: white;
+      color: #ddd;
       text-align: center;
     }
     .panel-body:hover {
@@ -60,7 +83,20 @@ a, .pointer {
       cursor: pointer;
     }
   }
+  .circle {
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+    background-color: white;
+    margin: 20px auto;
+    p {
+      height: 100%;
+      display: inline-block;
+    }
+  }
   .glyphicon-plus {
+    position: relative;
+    top: 20px;
     font-size: 50px;
   }
 }
