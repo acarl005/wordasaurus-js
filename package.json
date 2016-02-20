@@ -7,8 +7,9 @@
     "node": "4.2"
   },
   "scripts": {
-    "start": "gulp build && node server/server.js",
+    "start": "node server/server.js",
     "start-dev": "gulp",
+    "build": "gulp build",
     "test": "export NODE_ENV=test; mocha -t 10000"
   },
   "author": "Andrew Carlson <acarl005@g.ucla.edu> (https://github.com/acarl005)",
