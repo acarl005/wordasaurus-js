@@ -3,9 +3,8 @@ module.exports = function newDoc() {
     restrict: 'E',
     templateUrl: '/directives/new-doc.html',
     controllerAs: 'cardCtrl',
-    require: ['Document', 'alert', '$scope'],
     scope: {},
-    controller: function(Document, alert, $scope) {
+    controller: ['$scope', 'Document', 'alert', function($scope, Document, alert) {
       this.edit = false;
       this.submit = function() {
         Document.create(this.title)
@@ -16,6 +15,6 @@ module.exports = function newDoc() {
           this.edit = false;
         });
       };
-    },
+    }],
   };
 };
