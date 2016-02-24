@@ -4,7 +4,7 @@ function SynonymFactory($http, $q) {
       var match = word.match(/\w+/);
       if (!match) {
         return $q((resolve, reject) => {
-          reject({ message: 'No synonyms for ' + word});
+          reject({ data: { message: 'No synonyms for ' + word } });
         });
       }
       return $http.get('/synonyms/' + match[0]);

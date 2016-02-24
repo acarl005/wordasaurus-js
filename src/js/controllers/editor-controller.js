@@ -33,9 +33,7 @@ function EditorController($stateParams, Document, Synonym, alert) {
   this.replaceActive = word => {
     var body = this.doc.body.split(/\s+/);
     var oldWord = body[this.activeIndex];
-    console.log(body[this.activeIndex], oldWord, oldWord.replace(/\w+/, word));
     body[this.activeIndex] = oldWord.replace(/\w+/, word);
-    console.log(body[this.activeIndex], oldWord, oldWord.replace(/\w+/, word));
     this.doc.body = body.join(' ');
     this.activeIndex = null;
     this.syns = null;

@@ -21,7 +21,7 @@
         <section class="well">
           <h3>{{part}}</h3>
           <article>
-            <span class="label label-default" ng-repeat="syn in data.syn" ng-click="ctrl.replaceActive(syn)">{{ syn }}</span>
+            <span class="label label-default" ng-repeat="syn in (data.syn || data.sim)" ng-click="ctrl.replaceActive(syn)">{{ syn }}</span>
           </article>
         </section>
       </div>
