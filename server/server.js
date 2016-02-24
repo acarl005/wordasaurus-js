@@ -13,7 +13,9 @@ var docsCtrl = require('./controllers/documents-controller');
 var wordCtrl = require('./controllers/words-controller');
 
 var bodyParser = require('body-parser');
+var compress = require('compression');
 
+app.use(compress());
 
 app.use(bodyParser.json());
 app.use('/', express.static(path.resolve(__dirname + '/../public')));
