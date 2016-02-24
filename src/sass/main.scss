@@ -37,10 +37,17 @@ a, .pointer {
   background: linear-gradient(#bfbfbf, #e6e6e6);
 }
 
+.doc-card {
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
+}
+
 .panel-new {
-  transition: 0.5s;
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
   .panel-body {
-    transition: 0.5s;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
     height: 175px;
   }
 }
