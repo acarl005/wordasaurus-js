@@ -19,17 +19,20 @@ function EditorController($stateParams, Document, Synonym, alert) {
   this.setActive = (word, i) => {
     this.activeIndex = i;
     Synonym.get(word)
-    .success(syns => {
-      this.syns = syns;
-    })
-    .error(err => {
-      alert('danger', 'Error', err.message);
-      this.syns = null;
-    });
+    .then(
+      syns => {
+        this.syns = syns.data;
+      },
+      err => {
+        alert('danger', 'Error', err.data.message);
+        this.syns = null;
+      }
+    );
   };
   this.replaceActive = word => {
     var body = this.doc.body.split(' ');
-    body[this.activeIndex] = word;
+    var oldWord = body[this.activeIndex];
+    body[this.activeIndex] = oldWord.replace(/\w+/, word);
     this.doc.body = body.join(' ');
     this.activeIndex = null;
     this.syns = null;
