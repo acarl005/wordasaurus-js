@@ -48,8 +48,8 @@ gulp.task('script', () => buildScript('main.js', false));
 function buildScript(file, watch) {
 
   var props = {
-    entries : ['src/js/' + file],
-    debug : true,
+    entries: ['src/js/' + file],
+    debug: watch,
     transform: [
       ['babelify', { presets: ['es2015'] }],
     ],
