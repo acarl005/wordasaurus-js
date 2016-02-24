@@ -10,7 +10,7 @@
   <div ng-hide="ctrl.edit" class="thesaurus">
     <h1>Thesaurus</h1>
     <section class="word-select">
-      <span ng-repeat="word in ctrl.doc.body.split(' ') track by $index"
+      <span ng-repeat="word in ctrl.doc.body.split(ctrl.space) track by $index"
             ng-click="ctrl.setActive(word, $index)"
             ng-class="{ active: ctrl.activeIndex === $index }">
         {{ word }}

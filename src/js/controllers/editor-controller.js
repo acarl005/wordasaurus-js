@@ -1,5 +1,6 @@
 function EditorController($stateParams, Document, Synonym, alert) {
   this.edit = true;
+  this.space = /\s+/;
   Document.get($stateParams.id)
   .success(doc => {
     this.doc = doc;
