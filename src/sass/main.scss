@@ -57,6 +57,9 @@ a, .pointer {
   .panel-heading {
     h4 {
       color: white;
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
     }
     background: -webkit-linear-gradient(#111, #ccc);
     background: -o-linear-gradient(#111, #ccc);
@@ -74,7 +77,6 @@ a, .pointer {
 
 .not-edit {
   .panel-new {
-    height: 100%;
     .panel-heading {
       background-color: $light-blue;
       color: white;
