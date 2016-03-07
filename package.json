@@ -14,7 +14,9 @@
   },
   "author": "Andrew Carlson <acarl005@g.ucla.edu> (https://github.com/acarl005)",
   "license": "MIT",
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp-autoprefixer": "^3.1.0"
+  },
   "dependencies": {
     "angular": "^1.4.7",
     "angular-animate": "^1.4.7",

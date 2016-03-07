@@ -7,8 +7,10 @@
   height: 400px;
   overflow: auto;
   margin-bottom: 10px;
+  line-height: 1.8;
   span {
     &:hover {
+      color: $light-blue;
       text-decoration: underline;
       cursor: pointer;
     }

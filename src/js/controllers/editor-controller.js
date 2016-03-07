@@ -1,11 +1,14 @@
 function EditorController($stateParams, Document, Synonym, alert) {
+  this.loading = true;
   this.edit = true;
   this.space = /\s+/;
   Document.get($stateParams.id)
   .success(doc => {
+    this.loading = false;
     this.doc = doc;
   })
   .error(err => {
+    this.loading = false;
     alert('danger', 'Error', err.message);
   });
   this.save = () => {

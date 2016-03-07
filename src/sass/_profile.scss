@@ -1,0 +1,76 @@
+
+.doc-card {
+  transition: all .5s ease;
+}
+
+.panel-new {
+  transition: all .5s ease;
+  .panel-body {
+    transition: all .5s ease;
+    height: 175px;
+  }
+}
+
+.panel-doc {
+  transition: all .5s ease;
+  .panel-heading {
+    h4 {
+      color: white;
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    background: linear-gradient(#111, #ccc);
+  }
+  .panel-body {
+    height: 135px;
+    overflow: hidden;
+  }
+  .glyphicon:hover {
+    color: black;
+  }
+}
+
+.not-edit {
+  .panel-new {
+    .panel-heading {
+      background-color: $light-blue;
+      color: white;
+    }
+    .panel-body {
+      background-color: #eee;
+      color: #ddd;
+      text-align: center;
+      &:hover {
+        background-color: white;
+        color: #ddd;
+        cursor: pointer;
+        .glyphicon-plus {
+          top: 10px;
+          font-size: 80px;
+        }
+      }
+    }
+  }
+  .circle {
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+    background-color: white;
+    margin: 20px auto;
+    p {
+      height: 100%;
+      display: inline-block;
+    }
+  }
+  .glyphicon-plus {
+    position: relative;
+    top: 22px;
+    font-size: 55px;
+    transition: all .5s ease;
+  }
+}
+
+.well.card {
+  height: 235px;
+}

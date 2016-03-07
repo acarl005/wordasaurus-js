@@ -1,14 +1,26 @@
 <div class="container">
 
+  <div class="alert-spacer"></div>
+
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" ng-class="{ active: ctrl.edit }">
+      <a href ng-click="ctrl.edit = true" role="tab" data-toggle="tab">Editor</a>
+    </li>
+    <li role="presentation" ng-class="{ active: !ctrl.edit }">
+      <a href ng-click="ctrl.edit = false" role="tab" data-toggle="tab">Thesaurus</a>
+    </li>
+  </ul>
+
   <div ng-show="ctrl.edit" class="editor">
-    <h1>Edit</h1>
     <div class="form-group">
-      <textarea ng-model="ctrl.doc.body" class="form-control" id="edit-window"></textarea>
+      <textarea ng-model="ctrl.doc.body" class="form-control" placeholder="start writing..."
+                ng-class="{ loading: ctrl.loading }" id="edit-window">
+
+      </textarea>
     </div>
   </div>
 
   <div ng-hide="ctrl.edit" class="thesaurus">
-    <h1>Thesaurus</h1>
     <section class="word-select">
       <span ng-repeat="word in ctrl.doc.body.split(ctrl.space) track by $index"
             ng-click="ctrl.setActive(word, $index)"
@@ -28,16 +40,6 @@
     </div>
   </div>
 
-  <button class="btn btn-info"
-          ng-click="ctrl.edit = false"
-          ng-show="ctrl.edit">
-    Thesaurus
-  </button>
-  <button class="btn btn-default"
-          ng-click="ctrl.edit = true"
-          ng-hide="ctrl.edit">
-    Edit
-  </button>
   <button class="btn btn-primary" ng-click="ctrl.save()">Save</button>
 
 </div>

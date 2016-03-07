@@ -4,6 +4,12 @@
 
   <new-doc></new-doc>
 
+  <div ng-show="ctrl.loading" class="col-md-3 col-sm-4 col-xs-6">
+    <div class="well card loading">
+      <h4>Loading documents...</h4>
+    </div>
+  </div>
+
   <div class="col-md-3 col-sm-4 col-xs-6" ng-repeat="doc in ctrl.docs">
     <doc-card doc="doc"></doc-card>
   </div>

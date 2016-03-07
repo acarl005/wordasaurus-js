@@ -1,9 +1,13 @@
 function ProfileController($scope, Document, alert) {
 
+  this.loading = true;
+
   Document.get()
   .success(data => {
+    this.loading = false;
     this.docs = data;
   }).error(err => {
+    this.loading = false;
     alert('danger', 'Error', err.message);
   });
 

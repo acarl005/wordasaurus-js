@@ -7,12 +7,12 @@ function SignInController(User, alert, $state) {
     User.authenticate(user)
     .success(res => {
       alert('success', 'Logged in', 'Welcome back to Wordasaurus');
-      $state.go('home');
+      $state.go('profile');
     })
     .error(err => {
       alert('danger', 'Error', err.message);
     });
-  }
+  };
 }
 
 SignInController.$inject = ['User', 'alert', '$state'];

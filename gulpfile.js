@@ -7,6 +7,7 @@ var watchify = require('watchify');
 var notify = require('gulp-notify');
 var rename = require('gulp-rename');
 var sourcemaps = require('gulp-sourcemaps');
+var autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('default', ['script-dev', 'sass-dev', 'sass-watch', 'serve']);
 gulp.task('build', ['script', 'sass']);
@@ -26,6 +27,10 @@ gulp.task('sass-dev', () => {
   gulp.src('src/sass/main.scss')
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
+    .pipe(autoprefixer({
+      browsers: ['last 2 versions'],
+      cascade: false
+    }))
     .pipe(rename('bundle.css'))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('public/build/'));
@@ -38,6 +43,10 @@ gulp.task('sass-watch', () => {
 gulp.task('sass', () => {
   gulp.src('src/sass/main.scss')
     .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+    .pipe(autoprefixer({
+      browsers: ['last 2 versions'],
+      cascade: false
+    }))
     .pipe(rename('bundle.css'))
     .pipe(gulp.dest('public/build/'));
 });
