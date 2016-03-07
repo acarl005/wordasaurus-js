@@ -87,7 +87,7 @@ e()?oe.fx.start():oe.timers.pop()},oe.fx.interval=13,oe.fx.start=function(){ot||
 "use strict";module.exports=function(){return{resctrict:"E",scope:{doc:"="},templateUrl:"/directives/doc-card.html",controller:["$scope","Document",function(e,t){e["delete"]=function(){t.destroy(e.doc._id).then(function(t){e.$parent.$parent.ctrl.removeDoc(e.doc._id)})}}]}};
 
 },{}],28:[function(require,module,exports){
-"use strict";module.exports=function(){return{restrict:"E",templateUrl:"/directives/new-doc.html",controllerAs:"cardCtrl",scope:{},controller:["$scope","Document","alert",function(t,e,c){this.edit=!1,this.submit=function(){var r=this;e.create(this.title).success(function(e){c("success","Created","New document "+e.title+" was created."),t.$parent.ctrl.addDoc(e),r.title="",r.edit=!1})}}]}};
+"use strict";module.exports=function(){return{restrict:"E",templateUrl:"/directives/new-doc.html",controllerAs:"cardCtrl",scope:{},controller:["$scope","Document","alert",function(t,e,c){this.edit=!1,this.submit=function(){var r=this;e.create(this.title).success(function(e){c("success","Created",'New document "'+e.title+'" was created.'),t.$parent.ctrl.addDoc(e),r.title="",r.edit=!1})}}]}};
 
 },{}],29:[function(require,module,exports){
 "use strict";module.exports=function(){return{require:"ngModel",link:function(e,r,t,u){u.$parsers.push(function(r){var n=r===e.$eval(t.validateEquals);return u.$setValidity("equal",n),r})}}};

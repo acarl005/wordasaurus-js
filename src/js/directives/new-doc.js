@@ -9,7 +9,7 @@ module.exports = function newDoc() {
       this.submit = function() {
         Document.create(this.title)
         .success(res => {
-          alert('success', 'Created', `New document ${res.title} was created.`);
+          alert('success', 'Created', `New document "${res.title}" was created.`);
           $scope.$parent.ctrl.addDoc(res);
           this.title = '';
           this.edit = false;

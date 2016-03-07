@@ -26,8 +26,10 @@
     height: 135px;
     overflow: hidden;
   }
-  .glyphicon:hover {
-    color: black;
+  .panel-footer {
+    .glyphicon:hover {
+      color: black;
+    }
   }
 }
 
@@ -73,4 +75,32 @@
 
 .well.card {
   height: 235px;
+}
+
+.panel-cover {
+  transition: all .5s ease;
+  &:hover {
+    visibility: visible;
+    background: rgba(0, 0, 0, 0.7);
+    p {
+      visibility: visible;
+    }
+  }
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  bottom: 61px;
+  left: 15px;
+  right: 15px;
+  color: white;
+  p {
+    visibility: hidden;
+    font-size: 100px;
+    text-align: center;
+    position: relative;
+    top: 50px;
+    span {
+      text-decoration: underline;
+    }
+  }
 }
