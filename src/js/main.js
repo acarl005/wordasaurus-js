@@ -20,6 +20,7 @@ angular.module('wordasaurus', ['ui.router', 'ngAnimate'])
 .directive('validateEquals', require('./directives/validate-equals'))
 .directive('docCard', require('./directives/doc-card'))
 .directive('newDoc', require('./directives/new-doc'))
+.directive('imageText', require('./directives/image-text'))
 
 .service('alert', require('./services/alert'))
 .factory('User', require('./services/user-factory'))

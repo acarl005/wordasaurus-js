@@ -5,15 +5,18 @@
   </div>
 
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" ng-class="{ active: ctrl.edit }">
-      <a href ng-click="ctrl.edit = true" role="tab" data-toggle="tab">Editor</a>
+    <li role="presentation" ng-class="{ active: ctrl.tab === 'edit' }">
+      <a href ng-click="ctrl.tab = 'edit'" role="tab" data-toggle="tab">Editor</a>
     </li>
-    <li role="presentation" ng-class="{ active: !ctrl.edit }">
-      <a href ng-click="ctrl.edit = false" role="tab" data-toggle="tab">Thesaurus</a>
+    <li role="presentation" ng-class="{ active: ctrl.tab === 'thesaurus' }">
+      <a href ng-click="ctrl.tab = 'thesaurus'" role="tab" data-toggle="tab">Thesaurus</a>
+    </li>
+    <li role="presentation" ng-class="{ active: ctrl.tab === 'recognize' }">
+      <a href ng-click="ctrl.tab = 'recognize'" role="tab" data-toggle="tab">Image to Text</a>
     </li>
   </ul>
 
-  <div ng-show="ctrl.edit" class="editor">
+  <div ng-show="ctrl.tab === 'edit'" class="editor">
     <div class="form-group">
       <textarea ng-model="ctrl.doc.body" class="form-control" placeholder="start writing..."
                 ng-class="{ loading: ctrl.loading }" id="edit-window">
@@ -22,7 +25,7 @@
     </div>
   </div>
 
-  <div ng-hide="ctrl.edit" class="thesaurus">
+  <div ng-show="ctrl.tab === 'thesaurus'" class="thesaurus">
     <section class="word-select">
       <span ng-repeat="word in ctrl.doc.body.split(ctrl.space) track by $index"
             ng-click="ctrl.setActive(word, $index)"
@@ -42,6 +45,23 @@
     </div>
   </div>
 
-  <button class="btn btn-info" ng-click="ctrl.save()">Save</button>
+  <div ng-show="ctrl.tab === 'recognize'">
+    <image-text></image-text>
+  </div>
+
+  <div ng-show="ctrl.bars"> 
+    <div class="progress image-progress">
+      <div class="progress-bar progress-bar-striped active" role="progressbar" style="width: {{ ctrl.api }}%">
+        <span class="sr-only">{{ctrl.api}}% Complete</span>
+      </div>
+    </div>
+    <div class="progress image-progress">
+      <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" style="width: {{ ctrl.text }}%">
+        <span class="sr-only">{{ctrl.text}}% Complete</span>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn btn-info" ng-click="ctrl.save()" ng-hide="ctrl.tab === 'recognize'">Save</button>
 
 </div>

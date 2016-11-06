@@ -8,7 +8,9 @@ module.exports = function docCard() {
     controller: ['$scope', 'Document', function($scope, Document) {
       $scope.delete = () => {
         Document.destroy($scope.doc._id).then(res => {
-          $scope.$parent.$parent.ctrl.removeDoc($scope.doc._id);
+          if (confirm('Are you sure you want to delete this forever?')) {
+            $scope.$parent.$parent.ctrl.removeDoc($scope.doc._id);
+          }
         });
       };
     }]

@@ -1,7 +1,8 @@
 function EditorController($stateParams, Document, Synonym, alert) {
   this.loading = true;
-  this.edit = true;
+  this.tab = 'recognize';
   this.space = /\s+/;
+
   Document.get($stateParams.id)
   .success(doc => {
     this.loading = false;
@@ -11,6 +12,7 @@ function EditorController($stateParams, Document, Synonym, alert) {
     this.loading = false;
     alert('danger', 'Error', err.message);
   });
+
   this.save = () => {
     Document.update(this.doc)
     .success(() => {
@@ -20,6 +22,7 @@ function EditorController($stateParams, Document, Synonym, alert) {
       alert('danger', 'Error', err.message);
     });
   };
+
   this.setActive = (word, i) => {
     this.activeIndex = i;
     Synonym.get(word)
@@ -33,6 +36,7 @@ function EditorController($stateParams, Document, Synonym, alert) {
       }
     );
   };
+
   this.replaceActive = word => {
     var body = this.doc.body.split(/\s+/);
     var oldWord = body[this.activeIndex];
