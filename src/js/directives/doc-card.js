@@ -7,11 +7,11 @@ module.exports = function docCard() {
     templateUrl: '/directives/doc-card.html',
     controller: ['$scope', 'Document', function($scope, Document) {
       $scope.delete = () => {
-        Document.destroy($scope.doc._id).then(res => {
-          if (confirm('Are you sure you want to delete this forever?')) {
+        if (confirm('Are you sure you want to delete this forever?')) {
+          Document.destroy($scope.doc._id).then(res => {
             $scope.$parent.$parent.ctrl.removeDoc($scope.doc._id);
-          }
-        });
+          });
+        }
       };
     }]
   };
