@@ -1,6 +1,6 @@
 function EditorController($stateParams, Document, Synonym, alert) {
   this.loading = true;
-  this.tab = 'recognize';
+  this.tab = 'edit';
   this.space = /\s+/;
 
   Document.get($stateParams.id)
